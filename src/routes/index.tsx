@@ -56,7 +56,7 @@ function Index() {
       </HeroGeometric>
 
       {/* Globe section */}
-      <section className="relative bg-[#0A0A0A] px-4 sm:px-6 pb-16 sm:pb-24">
+      <section className="relative bg-[#0A0A0A] px-4 sm:px-6 -mt-8 sm:-mt-16 pb-12 sm:pb-20">
         <div className="relative max-w-xl mx-auto">
           <div
             aria-hidden
