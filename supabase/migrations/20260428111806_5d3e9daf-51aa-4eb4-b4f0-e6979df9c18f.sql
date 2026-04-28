@@ -1,0 +1,1 @@
+DELETE FROM public.early_access_signups WHERE email = 'verify-cloud-test@catchnex.com';
