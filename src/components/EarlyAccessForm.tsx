@@ -46,19 +46,23 @@ export function EarlyAccessForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="you@domain.com"
-          disabled={submitted}
+          disabled={submitted || loading}
           className="flex-1 bg-transparent px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/70 outline-none disabled:opacity-60"
         />
         <motion.button
           type="submit"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          disabled={submitted}
+          disabled={submitted || loading}
           className="btn-gold-glow inline-flex items-center gap-1.5 rounded-full bg-gradient-to-b from-[oklch(0.86_0.10_88)] to-[oklch(0.72_0.13_78)] px-5 py-2.5 text-sm font-medium text-primary-foreground transition-shadow disabled:opacity-80"
         >
           {submitted ? (
             <>
               <Check className="size-4" /> Joined
+            </>
+          ) : loading ? (
+            <>
+              <Loader2 className="size-4 animate-spin" /> Sending
             </>
           ) : (
             <>
@@ -68,7 +72,7 @@ export function EarlyAccessForm() {
         </motion.button>
       </div>
       <p className="mt-3 text-center text-xs text-muted-foreground">
-        Limited to the first 1,000 founding members.
+        {error ? <span className="text-red-400">{error}</span> : "Limited to the first 1,000 founding members."}
       </p>
     </motion.form>
   );
