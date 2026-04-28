@@ -63,10 +63,10 @@ function Index() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.15, ease }}
-          className="font-display text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-[-0.035em] leading-[1.02] max-w-4xl"
+          className="font-display text-5xl sm:text-7xl lg:text-8xl font-normal tracking-[-0.02em] leading-[0.95] max-w-4xl"
         >
           Next copy trading{" "}
-          <span className="text-gradient-gold italic font-medium">generation</span>
+          <span className="text-gradient-gold italic">generation</span>
         </motion.h1>
 
         <motion.p
