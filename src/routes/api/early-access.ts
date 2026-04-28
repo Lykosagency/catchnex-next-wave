@@ -1,9 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { createClient } from "@supabase/supabase-js";
 import { z } from "zod";
-
-const SPREADSHEET_ID = "1n97EJksQx-h-BL5TUbp69ErzN-TS8kzGoVlTfjFr6Kg";
-const RANGE = "Sheet1!A:C";
-const GATEWAY_URL = "https://connector-gateway.lovable.dev/google_sheets/v4";
 
 const BodySchema = z.object({
   email: z.string().trim().email().max(255),
@@ -13,9 +10,11 @@ export const Route = createFileRoute("/api/early-access")({
   server: {
     handlers: {
       POST: async ({ request }) => {
-        const LOVABLE_API_KEY = process.env.LOVABLE_API_KEY;
-        const GOOGLE_SHEETS_API_KEY = process.env.GOOGLE_SHEETS_API_KEY;
-        if (!LOVABLE_API_KEY || !GOOGLE_SHEETS_API_KEY) {
+        const SUPABASE_URL = process.env.SUPABASE_URL ?? process.env.VITE_SUPABASE_URL;
+        const SUPABASE_KEY =
+          process.env.SUPABASE_PUBLISHABLE_KEY ?? process.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+
+        if (!SUPABASE_URL || !SUPABASE_KEY) {
           return Response.json({ error: "Server not configured" }, { status: 500 });
         }
 
@@ -32,26 +31,22 @@ export const Route = createFileRoute("/api/early-access")({
         }
 
         const { email } = parsed.data;
-        const timestamp = new Date().toISOString();
         const userAgent = request.headers.get("user-agent") ?? "";
 
-        const url = `${GATEWAY_URL}/spreadsheets/${SPREADSHEET_ID}/values/${RANGE}:append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS`;
-
-        const res = await fetch(url, {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${LOVABLE_API_KEY}`,
-            "X-Connection-Api-Key": GOOGLE_SHEETS_API_KEY,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            values: [[timestamp, email, userAgent]],
-          }),
+        const supabase = createClient(SUPABASE_URL, SUPABASE_KEY, {
+          auth: { persistSession: false, autoRefreshToken: false },
         });
 
-        if (!res.ok) {
-          const text = await res.text();
-          console.error("Sheets append failed", res.status, text);
+        const { error } = await supabase
+          .from("early_access_signups")
+          .insert({ email: email.toLowerCase(), user_agent: userAgent });
+
+        if (error) {
+          // Duplicate email — treat as success so users don't see an error
+          if (error.code === "23505") {
+            return Response.json({ ok: true, duplicate: true });
+          }
+          console.error("Signup insert failed", error);
           return Response.json({ error: "Could not save" }, { status: 502 });
         }
 
