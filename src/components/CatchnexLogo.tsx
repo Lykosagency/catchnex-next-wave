@@ -6,7 +6,7 @@ export function CatchnexLogo({ className = "" }: { className?: string }) {
       src={logo}
       alt="Catchnex"
       className={className}
-      style={{ height: "55px", width: "auto" }}
+      style={{ height: "45px", width: "auto" }}
     />
   );
 }
