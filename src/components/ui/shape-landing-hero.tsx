@@ -21,15 +21,15 @@ function ElegantShape({
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: -150, rotate: rotate - 15 }}
+      initial={{ opacity: 0, y: -80, rotate: rotate - 10 }}
       animate={{ opacity: 1, y: 0, rotate }}
       transition={{
-        duration: 2.4,
+        duration: 1.2,
         delay,
         ease: [0.23, 0.86, 0.39, 0.96],
-        opacity: { duration: 1.2 },
+        opacity: { duration: 0.6 },
       }}
-      className={cn("absolute", className)}
+      className={cn("absolute will-change-transform", className)}
     >
       <motion.div
         animate={{ y: [0, 15, 0] }}
@@ -46,8 +46,7 @@ function ElegantShape({
             "absolute inset-0 rounded-full",
             "bg-gradient-to-r to-transparent",
             gradient,
-            "backdrop-blur-[2px] border-2 border-gold/[0.15]",
-            "shadow-[0_8px_32px_0_oklch(0.78_0.13_82_/_0.12)]",
+            "border-2 border-gold/[0.15]",
             "after:absolute after:inset-0 after:rounded-full",
             "after:bg-[radial-gradient(circle_at_50%_50%,oklch(1_0_0_/_0.2),transparent_70%)]",
           )}
