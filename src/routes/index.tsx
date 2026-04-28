@@ -33,14 +33,14 @@ function Index() {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: [0.25, 0.4, 0.25, 1] }}
-        className="absolute top-0 inset-x-0 z-20 flex items-center justify-between px-4 sm:px-12 py-4 sm:py-6"
+        className="absolute top-0 inset-x-0 z-20 flex items-center justify-between gap-3 px-4 sm:px-12 py-4 sm:py-6"
       >
-        <a href="/" className="hover-glow-gold inline-flex" aria-label="Catchnex home">
+        <a href="/" className="hover-glow-gold inline-flex items-center" aria-label="Catchnex home">
           <CatchnexLogo />
         </a>
-        <div className="inline-flex items-center gap-2 rounded-full border border-gold/15 bg-white/[0.03] px-2.5 sm:px-3 py-1 sm:py-1.5 backdrop-blur-md transition-colors hover:border-gold/40">
+        <div className="inline-flex items-center gap-2 rounded-full border border-gold/15 bg-white/[0.03] px-2.5 sm:px-3 h-7 sm:h-8 backdrop-blur-md transition-colors hover:border-gold/40">
           <span className="size-1.5 rounded-full bg-gold animate-pulse" />
-          <span className="text-[10px] sm:text-xs tracking-[0.18em] uppercase text-white/60">
+          <span className="text-[10px] sm:text-xs tracking-[0.18em] uppercase text-white/60 leading-none">
             Coming Soon
           </span>
         </div>
