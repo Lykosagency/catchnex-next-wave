@@ -137,7 +137,7 @@ export function HeroGeometric({
             animate="visible"
             variants={{
               hidden: {},
-              visible: { transition: { staggerChildren: 0.18, delayChildren: 0.6 } },
+              visible: { transition: { staggerChildren: 0.1, delayChildren: 0.2 } },
             }}
             className="text-[2.25rem] sm:text-5xl md:text-6xl font-semibold mb-6 md:mb-8 tracking-[-0.035em] leading-[1.05]"
           >
