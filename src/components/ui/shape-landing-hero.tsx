@@ -151,26 +151,44 @@ export function HeroGeometric({
             </span>
           </motion.div>
 
-          <motion.div
-            custom={1}
-            variants={fadeUpVariants}
+          <motion.h1
             initial="hidden"
             animate="visible"
+            variants={{
+              hidden: {},
+              visible: { transition: { staggerChildren: 0.18, delayChildren: 0.6 } },
+            }}
+            className="text-3xl sm:text-5xl md:text-6xl font-medium mb-6 md:mb-8 tracking-[-0.03em] leading-[1.05]"
           >
-            <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-6 md:mb-8 tracking-tight">
-              <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80">
-                {title1}
-              </span>
-              <br />
-              <span
-                className={cn(
-                  "bg-clip-text text-transparent bg-gradient-to-r from-gold-soft via-gold to-gold-deep font-pacifico",
-                )}
-              >
-                {title2}
-              </span>
-            </h1>
-          </motion.div>
+            <motion.span
+              variants={{
+                hidden: { opacity: 0, y: 24, filter: "blur(8px)" },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  filter: "blur(0px)",
+                  transition: { duration: 0.9, ease: [0.25, 0.4, 0.25, 1] },
+                },
+              }}
+              className="block bg-clip-text text-transparent bg-gradient-to-b from-white to-white/70"
+            >
+              {title1}
+            </motion.span>
+            <motion.span
+              variants={{
+                hidden: { opacity: 0, y: 24, filter: "blur(8px)" },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  filter: "blur(0px)",
+                  transition: { duration: 0.9, ease: [0.25, 0.4, 0.25, 1] },
+                },
+              }}
+              className="block bg-clip-text text-transparent bg-gradient-to-r from-gold-soft via-gold to-gold-deep"
+            >
+              {title2}
+            </motion.span>
+          </motion.h1>
 
           <motion.div
             custom={2}
