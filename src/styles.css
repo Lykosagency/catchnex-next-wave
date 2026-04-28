@@ -74,7 +74,7 @@
   --gold-deep: oklch(0.62 0.13 70);
 
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-display: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: "Instrument Serif", "Times New Roman", ui-serif, Georgia, serif;
 }
 
 .dark {
