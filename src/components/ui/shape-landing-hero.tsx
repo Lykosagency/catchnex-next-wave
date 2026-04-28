@@ -21,15 +21,15 @@ function ElegantShape({
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: -150, rotate: rotate - 15 }}
+      initial={{ opacity: 0, y: -80, rotate: rotate - 10 }}
       animate={{ opacity: 1, y: 0, rotate }}
       transition={{
-        duration: 2.4,
+        duration: 1.2,
         delay,
         ease: [0.23, 0.86, 0.39, 0.96],
-        opacity: { duration: 1.2 },
+        opacity: { duration: 0.6 },
       }}
-      className={cn("absolute", className)}
+      className={cn("absolute will-change-transform", className)}
     >
       <motion.div
         animate={{ y: [0, 15, 0] }}
@@ -46,8 +46,7 @@ function ElegantShape({
             "absolute inset-0 rounded-full",
             "bg-gradient-to-r to-transparent",
             gradient,
-            "backdrop-blur-[2px] border-2 border-gold/[0.15]",
-            "shadow-[0_8px_32px_0_oklch(0.78_0.13_82_/_0.12)]",
+            "border-2 border-gold/[0.15]",
             "after:absolute after:inset-0 after:rounded-full",
             "after:bg-[radial-gradient(circle_at_50%_50%,oklch(1_0_0_/_0.2),transparent_70%)]",
           )}
@@ -73,13 +72,13 @@ export function HeroGeometric({
   children,
 }: HeroGeometricProps) {
   const fadeUpVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 20 },
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
       transition: {
-        duration: 1,
-        delay: 0.5 + i * 0.2,
+        duration: 0.6,
+        delay: 0.1 + i * 0.12,
         ease: [0.25, 0.4, 0.25, 1] as [number, number, number, number],
       },
     }),
@@ -87,7 +86,7 @@ export function HeroGeometric({
 
   return (
     <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#0A0A0A]">
-      <div className="absolute inset-0 bg-gradient-to-br from-gold/[0.05] via-transparent to-gold-deep/[0.05] blur-3xl" />
+      <div className="absolute inset-0 bg-gradient-to-br from-gold/[0.05] via-transparent to-gold-deep/[0.05]" />
 
       <div className="absolute inset-0 overflow-hidden">
         <ElegantShape
@@ -97,24 +96,6 @@ export function HeroGeometric({
           rotate={12}
           gradient="from-gold/[0.18]"
           className="left-[-10%] md:left-[-5%] top-[15%] md:top-[20%]"
-        />
-
-        <ElegantShape
-          delay={0.5}
-          width={500}
-          height={120}
-          rotate={-15}
-          gradient="from-gold-deep/[0.18]"
-          className="right-[-5%] md:right-[0%] top-[70%] md:top-[75%]"
-        />
-
-        <ElegantShape
-          delay={0.4}
-          width={300}
-          height={80}
-          rotate={-8}
-          gradient="from-gold-soft/[0.18]"
-          className="left-[5%] md:left-[10%] bottom-[5%] md:bottom-[10%]"
         />
 
         <ElegantShape
@@ -156,7 +137,7 @@ export function HeroGeometric({
             animate="visible"
             variants={{
               hidden: {},
-              visible: { transition: { staggerChildren: 0.18, delayChildren: 0.6 } },
+              visible: { transition: { staggerChildren: 0.1, delayChildren: 0.2 } },
             }}
             className="text-[2.25rem] sm:text-5xl md:text-6xl font-semibold mb-6 md:mb-8 tracking-[-0.035em] leading-[1.05]"
           >
@@ -167,7 +148,7 @@ export function HeroGeometric({
                   opacity: 1,
                   y: 0,
                   filter: "blur(0px)",
-                  transition: { duration: 0.9, ease: [0.25, 0.4, 0.25, 1] },
+                  transition: { duration: 0.55, ease: [0.25, 0.4, 0.25, 1] },
                 },
               }}
               className="block bg-clip-text text-transparent bg-gradient-to-b from-white to-white/70"
@@ -181,7 +162,7 @@ export function HeroGeometric({
                   opacity: 1,
                   y: 0,
                   filter: "blur(0px)",
-                  transition: { duration: 0.9, ease: [0.25, 0.4, 0.25, 1] },
+                  transition: { duration: 0.55, ease: [0.25, 0.4, 0.25, 1] },
                 },
               }}
               className="block relative"

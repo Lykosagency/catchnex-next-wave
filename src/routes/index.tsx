@@ -1,9 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { CatchnexLogo } from "@/components/CatchnexLogo";
 import { EarlyAccessForm } from "@/components/EarlyAccessForm";
-import { GlobePulse } from "@/components/ui/cobe-globe-pulse";
 import { HeroGeometric } from "@/components/ui/shape-landing-hero";
+
+const GlobePulse = lazy(() =>
+  import("@/components/ui/cobe-globe-pulse").then((m) => ({ default: m.GlobePulse })),
+);
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -60,13 +64,13 @@ function Index() {
         <div className="relative max-w-xl mx-auto">
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0 blur-3xl opacity-40"
+            className="pointer-events-none absolute inset-0 blur-2xl opacity-40"
             style={{
               background:
                 "radial-gradient(circle at center, oklch(0.78 0.13 82 / 0.25), transparent 65%)",
             }}
           />
-          <GlobePulse className="relative z-10" />
+          <LazyGlobe />
         </div>
       </section>
 
@@ -79,6 +83,37 @@ function Index() {
           Built for traders who don't wait.
         </p>
       </footer>
+    </div>
+  );
+}
+
+function LazyGlobe() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    if (!ref.current || show) return;
+    const el = ref.current;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setShow(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "200px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [show]);
+
+  return (
+    <div ref={ref} className="relative z-10 min-h-[280px] sm:min-h-[360px]">
+      {show && (
+        <Suspense fallback={null}>
+          <GlobePulse className="relative z-10" />
+        </Suspense>
+      )}
     </div>
   );
 }
