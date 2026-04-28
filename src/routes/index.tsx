@@ -2,8 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Background } from "@/components/Background";
 import { CatchnexLogo } from "@/components/CatchnexLogo";
-import { DashboardCard } from "@/components/DashboardCard";
 import { EarlyAccessForm } from "@/components/EarlyAccessForm";
+import { GlobePulse } from "@/components/ui/cobe-globe-pulse";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -83,8 +83,16 @@ function Index() {
           <EarlyAccessForm />
         </div>
 
-        <div className="mt-20 sm:mt-24 w-full">
-          <DashboardCard />
+        <div className="mt-20 sm:mt-24 w-full max-w-xl mx-auto relative">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 blur-3xl opacity-40"
+            style={{
+              background:
+                "radial-gradient(circle at center, oklch(0.78 0.13 82 / 0.25), transparent 65%)",
+            }}
+          />
+          <GlobePulse className="relative z-10" />
         </div>
       </main>
 
