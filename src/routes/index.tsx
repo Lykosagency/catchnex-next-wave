@@ -1,9 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { CatchnexLogo } from "@/components/CatchnexLogo";
 import { EarlyAccessForm } from "@/components/EarlyAccessForm";
-import { GlobePulse } from "@/components/ui/cobe-globe-pulse";
 import { HeroGeometric } from "@/components/ui/shape-landing-hero";
+
+const GlobePulse = lazy(() =>
+  import("@/components/ui/cobe-globe-pulse").then((m) => ({ default: m.GlobePulse })),
+);
 
 export const Route = createFileRoute("/")({
   head: () => ({
