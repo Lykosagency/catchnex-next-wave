@@ -148,7 +148,7 @@ export function HeroGeometric({
                   opacity: 1,
                   y: 0,
                   filter: "blur(0px)",
-                  transition: { duration: 0.9, ease: [0.25, 0.4, 0.25, 1] },
+                  transition: { duration: 0.55, ease: [0.25, 0.4, 0.25, 1] },
                 },
               }}
               className="block bg-clip-text text-transparent bg-gradient-to-b from-white to-white/70"
@@ -162,7 +162,7 @@ export function HeroGeometric({
                   opacity: 1,
                   y: 0,
                   filter: "blur(0px)",
-                  transition: { duration: 0.9, ease: [0.25, 0.4, 0.25, 1] },
+                  transition: { duration: 0.55, ease: [0.25, 0.4, 0.25, 1] },
                 },
               }}
               className="block relative"
