@@ -64,13 +64,13 @@ function Index() {
         <div className="relative max-w-xl mx-auto">
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0 blur-3xl opacity-40"
+            className="pointer-events-none absolute inset-0 blur-2xl opacity-40"
             style={{
               background:
                 "radial-gradient(circle at center, oklch(0.78 0.13 82 / 0.25), transparent 65%)",
             }}
           />
-          <GlobePulse className="relative z-10" />
+          <LazyGlobe />
         </div>
       </section>
 
