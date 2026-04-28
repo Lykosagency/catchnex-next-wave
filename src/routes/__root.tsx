@@ -33,6 +33,12 @@ export const Route = createRootRoute({
       { name: "description", content: "Premium crypto copy trading platform. Coming soon." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "Catchnex — Coming Soon" },
+      { name: "twitter:title", content: "Catchnex — Coming Soon" },
+      { property: "og:description", content: "Premium crypto copy trading platform. Coming soon." },
+      { name: "twitter:description", content: "Premium crypto copy trading platform. Coming soon." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/bb596374-f4ef-4806-b8b1-810128ede34d/id-preview-c0664752--801a5712-f636-4744-96b5-5cc3188ceddf.lovable.app-1777370594001.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/bb596374-f4ef-4806-b8b1-810128ede34d/id-preview-c0664752--801a5712-f636-4744-96b5-5cc3188ceddf.lovable.app-1777370594001.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
