@@ -29,6 +29,37 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+function LazyGlobe() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    if (!ref.current || show) return;
+    const el = ref.current;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setShow(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "200px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [show]);
+
+  return (
+    <div ref={ref} className="relative z-10 min-h-[280px] sm:min-h-[360px]">
+      {show && (
+        <Suspense fallback={null}>
+          <GlobePulse className="relative z-10" />
+        </Suspense>
+      )}
+    </div>
+  );
+}
+
 function Index() {
   return (
     <div className="relative min-h-screen bg-[#0A0A0A] text-foreground overflow-x-hidden">
@@ -87,33 +118,3 @@ function Index() {
   );
 }
 
-function LazyGlobe() {
-  const ref = useRef<HTMLDivElement>(null);
-  const [show, setShow] = useState(false);
-
-  useEffect(() => {
-    if (!ref.current || show) return;
-    const el = ref.current;
-    const io = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((e) => e.isIntersecting)) {
-          setShow(true);
-          io.disconnect();
-        }
-      },
-      { rootMargin: "200px" },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [show]);
-
-  return (
-    <div ref={ref} className="relative z-10 min-h-[280px] sm:min-h-[360px]">
-      {show && (
-        <Suspense fallback={null}>
-          <GlobePulse className="relative z-10" />
-        </Suspense>
-      )}
-    </div>
-  );
-}
