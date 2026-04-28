@@ -136,17 +136,17 @@ export function HeroGeometric({
         />
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 md:px-6">
+      <div className="relative z-10 container mx-auto px-4 md:px-6 py-20 md:py-0">
         <div className="max-w-3xl mx-auto text-center">
           <motion.div
             custom={0}
             variants={fadeUpVariants}
             initial="hidden"
             animate="visible"
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.03] border border-gold/[0.2] mb-8 md:mb-12"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.03] border border-gold/[0.2] mb-6 sm:mb-8 md:mb-12 transition-colors hover:border-gold/50"
           >
             <Circle className="h-2 w-2 fill-gold text-gold" />
-            <span className="text-[11px] sm:text-xs tracking-[0.18em] uppercase text-white/60">
+            <span className="text-[10px] sm:text-xs tracking-[0.18em] uppercase text-white/60">
               {badge}
             </span>
           </motion.div>
@@ -158,7 +158,7 @@ export function HeroGeometric({
               hidden: {},
               visible: { transition: { staggerChildren: 0.18, delayChildren: 0.6 } },
             }}
-            className="text-3xl sm:text-5xl md:text-6xl font-semibold mb-6 md:mb-8 tracking-[-0.035em] leading-[1.05]"
+            className="text-[2.25rem] sm:text-5xl md:text-6xl font-semibold mb-6 md:mb-8 tracking-[-0.035em] leading-[1.05]"
           >
             <motion.span
               variants={{
