@@ -158,7 +158,7 @@ export function HeroGeometric({
               hidden: {},
               visible: { transition: { staggerChildren: 0.18, delayChildren: 0.6 } },
             }}
-            className="text-3xl sm:text-5xl md:text-6xl font-medium mb-6 md:mb-8 tracking-[-0.03em] leading-[1.05]"
+            className="text-3xl sm:text-5xl md:text-6xl font-semibold mb-6 md:mb-8 tracking-[-0.035em] leading-[1.05]"
           >
             <motion.span
               variants={{
@@ -184,9 +184,24 @@ export function HeroGeometric({
                   transition: { duration: 0.9, ease: [0.25, 0.4, 0.25, 1] },
                 },
               }}
-              className="block bg-clip-text text-transparent bg-gradient-to-r from-gold-soft via-gold to-gold-deep"
+              className="block relative"
             >
-              {title2}
+              <motion.span
+                animate={{ backgroundPosition: ["0% 50%", "200% 50%"] }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+                className="bg-clip-text text-transparent"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(90deg, oklch(0.62 0.13 70) 0%, oklch(0.78 0.13 82) 25%, oklch(0.96 0.04 88) 50%, oklch(0.78 0.13 82) 75%, oklch(0.62 0.13 70) 100%)",
+                  backgroundSize: "200% 100%",
+                }}
+              >
+                {title2}
+              </motion.span>
             </motion.span>
           </motion.h1>
 
