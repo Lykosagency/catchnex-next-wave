@@ -27,11 +27,12 @@ export function EarlyAccessForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: email.trim() }),
       });
+      const data = await res.json().catch(() => ({}));
       if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
         throw new Error(data.error ?? "Something went wrong");
       }
       setSubmitted(true);
+      setDuplicate(Boolean(data.duplicate));
     } catch (err) {
       setServerError(err instanceof Error ? err.message : "Something went wrong");
     } finally {
