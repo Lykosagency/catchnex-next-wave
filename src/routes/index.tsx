@@ -33,9 +33,9 @@ function Index() {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: [0.25, 0.4, 0.25, 1] }}
-        className="absolute top-0 inset-x-0 z-20 flex items-center justify-between px-6 sm:px-10 py-6"
+        className="absolute top-0 inset-x-0 z-20 flex items-center justify-between px-6 sm:px-12 py-5 sm:py-6"
       >
-        <CatchnexLogo className="h-10 sm:h-11" />
+        <CatchnexLogo />
         <div className="inline-flex items-center gap-2 rounded-full border border-gold/15 bg-white/[0.03] px-3 py-1.5 backdrop-blur-md">
           <span className="size-1.5 rounded-full bg-gold animate-pulse" />
           <span className="text-[11px] sm:text-xs tracking-[0.18em] uppercase text-white/60">
